@@ -55,8 +55,6 @@ namespace HASHCODE_2019
             var temp1 = FirstSlideNode.Previous;
             var temp2 = SecondSlideNode.Previous;
 
-            list.Remove(FirstSlide);
-
             // add first slide
             LinkedListNode<Slide> node1;
             if (temp1 == null)
@@ -65,7 +63,6 @@ namespace HASHCODE_2019
                 node1 = list.AddAfter(temp1, SecondSlide);
             localSearch.SlideShow.References[SecondSlide] = node1;
 
-            list.Remove(SecondSlide);
             // add second slide
             LinkedListNode<Slide> node2;
             if (temp2 == null)
@@ -73,6 +70,10 @@ namespace HASHCODE_2019
             else
                 node2 =list.AddAfter(temp2, FirstSlide);
             localSearch.SlideShow.References[FirstSlide] = node2;
+
+            list.Remove(FirstSlideNode);
+            list.Remove(SecondSlideNode);
+
 
 
         }
