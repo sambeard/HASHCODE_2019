@@ -43,9 +43,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ILSActionChooser.cs" />
+    <Compile Include="LocalSearch.cs" />
     <Compile Include="Photo.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ScoreEvaluator.cs" />
     <Compile Include="Slideshow.cs" />
     <Compile Include="StartSolution.cs" />
     <Compile Include="ILSAction.cs" />
