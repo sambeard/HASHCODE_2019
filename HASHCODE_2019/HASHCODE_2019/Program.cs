@@ -9,7 +9,7 @@ namespace HASHCODE_2019
 {
     class Program
     {
-        static int iteration = 3;
+        static int iteration = 4;
         static string INPUT_PATH = Directory.GetCurrentDirectory() + $"/../../INPUTS/";
         static string OUT_FILE = Directory.GetCurrentDirectory() + $"/../../SOLUTIONS/SOLUTION{iteration}.txt";
         static string OUT_PATH = Directory.GetCurrentDirectory() + $"/../../SOLUTIONS/";

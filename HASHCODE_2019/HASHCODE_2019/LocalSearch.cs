@@ -17,7 +17,7 @@ namespace HASHCODE_2019
         float omega = 0.95f;
         int UPDATE_ITERATIONS = 1000;
 
-        int MAX_ITERATION = 10000;
+        int MAX_ITERATION = 100000;
 
         public LocalSearch(List<Photo> photos) {
 
@@ -46,6 +46,7 @@ namespace HASHCODE_2019
                 }
                 if (i % UPDATE_ITERATIONS == 0) {
                     T *= omega;
+                    Console.WriteLine(T);
                 }
 
             }
