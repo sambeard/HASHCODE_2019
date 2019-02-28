@@ -24,6 +24,15 @@ namespace HASHCODE_2019
          }
          */
 
+        public static int InterestScore(Slide slide_n, Slide slide_n1) {
+            int a, b, c;
+            a = CommonTagsScore(slide_n, slide_n1);
+            b = CommonTagsScore(slide_n, slide_n1);
+            c = CommonTagsScore(slide_n, slide_n1);
+                       
+            int d = Math.Min(a, b);
+            return Math.Min(d, c);
+        }
         static int CommonTagsScore(Slide slide_n, Slide slide_n1)
         {
             List<int> slides = (List<int>)slide_n.GetTags().Intersect(slide_n1.GetTags());
