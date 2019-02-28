@@ -22,6 +22,14 @@ namespace HASHCODE_2019
                 References.Add(slide, node);
             }
         }
+        public void RemoveSlide(Slide s) {
+            Slides.Remove(s);
+            References.Remove(s);
+        }
+        public void AddSlideBefore(LinkedListNode<Slide> before, Slide s) {
+            var node = Slides.AddBefore(before, s);
+            References.Add(s,node);
+        }
 
         public void Print()
         {
