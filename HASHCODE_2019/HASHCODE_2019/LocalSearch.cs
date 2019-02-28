@@ -22,7 +22,7 @@ namespace HASHCODE_2019
             ClosedPhotos = new List<Photo>();
 
             // call startsolution
-
+            iterate();
 
         }
 
@@ -33,14 +33,15 @@ namespace HASHCODE_2019
                 // get action
                 ILSAction action = ActionChoser.GetAction();
 
-                // look at diff
+                ActionObject a = action.Calculate(this);
+                if (!a.FAILED && a.Diff > -2) {
+
+                }
 
                 // execute if diff > 0
+                action.Execute(this);
 
             }
-
-            // return slideshow
-
         }
 
     }
