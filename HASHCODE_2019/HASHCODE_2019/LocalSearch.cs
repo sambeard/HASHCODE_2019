@@ -13,7 +13,7 @@ namespace HASHCODE_2019
         public List<Photo> ClosedPhotos;
         public ILSActionChooser ActionChoser;
         Random Random = new Random();
-        float T = 10;
+        float T = 5;
         float omega = 0.95f;
         int UPDATE_ITERATIONS = 1000;
 
