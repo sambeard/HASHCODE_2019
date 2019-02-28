@@ -9,16 +9,20 @@ namespace HASHCODE_2019
     class Program
     {
         static int iteration = 0;
-        static string INPUT_FILE = System.IO.Directory.GetCurrentDirectory() + "/../../INPUT_FILE.txt";
+        static IEnumerable<string> INPUT_FILES = System.IO.Directory.EnumerateFiles("/../../INPUTS");
         static string OUT_FILE = System.IO.Directory.GetCurrentDirectory() + $"/../../SOLUTIONS/SOLUTION{iteration}.txt";
         static void Main(string[] args)
         {
-            string[] lines = System.IO.File.ReadAllLines(INPUT_FILE);
-            foreach (var line  in lines)
+            foreach (var file in INPUT_FILES)
             {
-                Console.WriteLine(line);
+                string[] lines = System.IO.File.ReadAllLines(file);
+                foreach (var line in lines)
+                {
+                    Console.WriteLine(line);
+                }
+                System.IO.File.WriteAllLines(OUT_FILE, lines);
             }
-            System.IO.File.WriteAllLines(OUT_FILE, lines);
+            
             Console.ReadLine();
 
         }
