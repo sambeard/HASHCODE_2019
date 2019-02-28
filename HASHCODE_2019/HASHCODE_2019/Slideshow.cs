@@ -35,9 +35,10 @@ namespace HASHCODE_2019
         {
             string[] output = new string[Slides.Count + 1];
             output[0] = Slides.Count.ToString();
-            for (int i = 0; i < Slides.Count; i++)
+            int index = 1;
+            foreach (var slide in Slides)
             {
-                output[i] = Slides[i].Print();
+                output[index++] = slide.Print();
             }
             return output;
         }
