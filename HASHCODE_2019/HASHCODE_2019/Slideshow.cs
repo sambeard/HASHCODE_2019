@@ -39,6 +39,11 @@ namespace HASHCODE_2019
                 slide.Print();
             }
         }
+
+        public Slide GetRandomslide() {
+            Random rand = new Random();
+           return References.ElementAt(rand.Next(0, References.Count)).Key;
+        }
     }
 
     abstract class Slide
