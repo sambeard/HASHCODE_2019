@@ -20,8 +20,8 @@ namespace HASHCODE_2019
         static void Main(string[] args)
         {
             string[] inputs = Directory.GetFiles(INPUT_PATH);
-            string[] outputFiles = new string[] { $"a_{iteration}.txt", $"b_{iteration}.txt", $"c_{iteration}.txt",
-                                                  $"d_{iteration}.txt", $"e_{iteration}.txt"};
+            string[] outputFiles = new string[] { $"{iteration}_a.txt", $"{iteration}_b.txt", $"{iteration}_c.txt",
+                                                  $"{iteration}_d.txt", $"{iteration}_e.txt"};
 
             for (int i = 0; i < inputs.Length; i++)
             {
