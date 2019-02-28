@@ -43,14 +43,14 @@ namespace HASHCODE_2019
         static int S_1_Ex_Tags(Slide slide_n, Slide slide_n1)
         {
 
-            List<int> slides = (List<int>)slide_n.GetTags().Union(slide_n1.GetTags());
+            List<int> slides = slide_n.GetTags().Union(slide_n1.GetTags()).ToList();
             List<int> left_slides = slide_n.GetTags().Where(x => (!slides.Contains(x))).ToList();
             return left_slides.Count;
         }
 
         static int S_2_Ex_Tags(Slide slide_n, Slide slide_n1)
         {
-            List<int> slides = (List<int>)slide_n.GetTags().Union(slide_n1.GetTags());
+            List<int> slides = slide_n.GetTags().Union(slide_n1.GetTags()).ToList();
             List<int> right_slides = slide_n1.GetTags().Where(x => (!slides.Contains(x))).ToList();
             return right_slides.Count;
         }

@@ -44,6 +44,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ILSActionChooser.cs" />
+    <Compile Include="ILSSwapAction.cs" />
     <Compile Include="LocalSearch.cs" />
     <Compile Include="Photo.cs" />
     <Compile Include="Program.cs" />
