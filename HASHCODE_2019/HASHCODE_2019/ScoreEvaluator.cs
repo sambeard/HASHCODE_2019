@@ -25,10 +25,11 @@ namespace HASHCODE_2019
          */
 
         public static int InterestScore(Slide slide_n, Slide slide_n1) {
+            if (slide_n == null || slide_n1 == null) { return 0;}
             int a, b, c;
             a = CommonTagsScore(slide_n, slide_n1);
-            b = CommonTagsScore(slide_n, slide_n1);
-            c = CommonTagsScore(slide_n, slide_n1);
+            b = S_1_Ex_Tags(slide_n, slide_n1);
+            c = S_2_Ex_Tags(slide_n, slide_n1);
                        
             int d = Math.Min(a, b);
             return Math.Min(d, c);
