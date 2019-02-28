@@ -37,13 +37,13 @@ namespace HASHCODE_2019
             int diff = 0;
 
             // interest of original
-            diff -= ScoreEvaluator.InterestScore(FirstSlideNode.Previous.Value, FirstSlide) + ScoreEvaluator.InterestScore(FirstSlide, FirstSlideNode.Next.Value);
-            diff -= ScoreEvaluator.InterestScore(SecondSlideNode.Previous.Value, SecondSlide) + ScoreEvaluator.InterestScore(SecondSlide, SecondSlideNode.Next.Value);
+            diff -= ScoreEvaluator.InterestScore(FirstSlideNode.Previous?.Value, FirstSlide) + ScoreEvaluator.InterestScore(FirstSlide, FirstSlideNode.Next?.Value);
+            diff -= ScoreEvaluator.InterestScore(SecondSlideNode.Previous?.Value, SecondSlide) + ScoreEvaluator.InterestScore(SecondSlide, SecondSlideNode.Next?.Value);
 
 
             // interest of new
-            diff += ScoreEvaluator.InterestScore(FirstSlideNode.Previous.Value, SecondSlide) + ScoreEvaluator.InterestScore(SecondSlide, FirstSlideNode.Next.Value);
-            diff += ScoreEvaluator.InterestScore(SecondSlideNode.Previous.Value, FirstSlide) + ScoreEvaluator.InterestScore(FirstSlide, SecondSlideNode.Next.Value);
+            diff += ScoreEvaluator.InterestScore(FirstSlideNode.Previous?.Value, SecondSlide) + ScoreEvaluator.InterestScore(SecondSlide, FirstSlideNode.Next?.Value);
+            diff += ScoreEvaluator.InterestScore(SecondSlideNode.Previous?.Value, FirstSlide) + ScoreEvaluator.InterestScore(FirstSlide, SecondSlideNode.Next?.Value);
 
             return new ActionObject(diff);
         }
@@ -56,7 +56,6 @@ namespace HASHCODE_2019
             var temp2 = SecondSlideNode.Previous;
 
             list.Remove(FirstSlide);
-            list.Remove(SecondSlide);
 
             // add first slide
             LinkedListNode<Slide> node1;
@@ -66,6 +65,7 @@ namespace HASHCODE_2019
                 node1 = list.AddAfter(temp1, SecondSlide);
             localSearch.SlideShow.References[SecondSlide] = node1;
 
+            list.Remove(SecondSlide);
             // add second slide
             LinkedListNode<Slide> node2;
             if (temp2 == null)
