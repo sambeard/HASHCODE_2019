@@ -8,7 +8,8 @@ namespace HASHCODE_2019
 {
     enum LSActionEnum {
         Add,
-        Remove
+        Remove,
+        Swap
     }
 
     class ILSActionChooser
@@ -17,8 +18,9 @@ namespace HASHCODE_2019
         Random random;
         public ILSActionChooser() {
             Weights = new List<LSActionEnum>();
-            Weights.AddRange(Enumerable.Repeat(LSActionEnum.Add, 1));
-            Weights.AddRange(Enumerable.Repeat(LSActionEnum.Remove, 1));
+            Weights.AddRange(Enumerable.Repeat(LSActionEnum.Add, 0));
+            Weights.AddRange(Enumerable.Repeat(LSActionEnum.Remove, 0));
+            Weights.AddRange(Enumerable.Repeat(LSActionEnum.Swap, 1));
             random = new Random();
 
         }
@@ -31,6 +33,9 @@ namespace HASHCODE_2019
                     break;
                 case LSActionEnum.Remove:
                     throw new NotImplementedException();
+                    break;
+                case LSActionEnum.Swap:
+                    return new ILSSwapAction();
                     break;
                 default:
                     throw new NotImplementedException();
