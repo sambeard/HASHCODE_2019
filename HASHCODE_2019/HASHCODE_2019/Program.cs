@@ -3,26 +3,39 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.IO;
 
 namespace HASHCODE_2019
 {
     class Program
     {
         static int iteration = 0;
-        static string INPUT_FILE = System.IO.Directory.GetCurrentDirectory() + $"/../../INPUTS/a_example.txt";
-        static string OUT_FILE = System.IO.Directory.GetCurrentDirectory() + $"/../../SOLUTIONS/SOLUTION{iteration}.txt";
+        static string INPUT_PATH = Directory.GetCurrentDirectory() + $"/../../INPUTS/";
+        static string OUT_FILE = Directory.GetCurrentDirectory() + $"/../../SOLUTIONS/SOLUTION{iteration}.txt";
+        static string OUT_PATH = Directory.GetCurrentDirectory() + $"/../../SOLUTIONS/";
         static int N;
         static Dictionary<string, int> tags;
         static List<Photo> photos;
-
+         
         static void Main(string[] args)
         {
-            string[] lines = System.IO.File.ReadAllLines(INPUT_FILE);
+            string[] inputs = Directory.GetFiles(INPUT_PATH);
+            string[] outputFiles = new string[] { $"a_{iteration}.txt", $"b_{iteration}.txt", $"c_{iteration}.txt",
+                                                  $"d_{iteration}.txt", $"e_{iteration}.txt"};
 
-            parseInput(lines);
-            System.IO.File.WriteAllLines(OUT_FILE, lines);
+            for (int i = 0; i < inputs.Length; i++)
+            {
+                string input = inputs[i];
+                string output = outputFiles[i];
+                Console.WriteLine($"Reading {input}");
+
+                string[] lines = File.ReadAllLines(input);
+                parseInput(lines);
+                var solution = StartSolution.GenerateSlideshow(photos);
+
+                File.WriteAllLines(OUT_PATH + output, solution.Print());
+            }
             Console.ReadLine();
-
         }
 
         static void parseInput(string[] lines) {
