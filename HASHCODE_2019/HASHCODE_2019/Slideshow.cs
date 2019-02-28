@@ -15,19 +15,21 @@ namespace HASHCODE_2019
             Slides = slides;
         }
 
-        public void Print()
+        public string[] Print()
         {
-            Console.WriteLine(Slides.Count);
-            foreach (var slide in Slides)
+            string[] output = new string[Slides.Count + 1];
+            output[0] = Slides.Count.ToString();
+            for (int i = 0; i < Slides.Count; i++)
             {
-                slide.Print();
+                output[i] = Slides[i].Print();
             }
+            return output;
         }
     }
 
     abstract class Slide
     {
-        public abstract void Print();
+        public abstract string Print();
     }
 
     class HorizontalSlide : Slide
@@ -39,9 +41,9 @@ namespace HASHCODE_2019
             Photo = photo;
         }
 
-        public override void Print()
+        public override string Print()
         {
-            Console.WriteLine(Photo.ID);
+            return Photo.ID.ToString();
         }
     }
 
@@ -56,9 +58,9 @@ namespace HASHCODE_2019
             Photo2 = photo2;
         }
 
-        public override void Print()
+        public override string Print()
         {
-            Console.WriteLine($"{Photo1.ID} {Photo2.ID}");
+            return $"{Photo1.ID} {Photo2.ID}";
         }
     }
 }
