@@ -9,7 +9,7 @@ namespace HASHCODE_2019
 {
     class Program
     {
-        static int iteration = 0;
+        static int iteration = 1;
         static string INPUT_PATH = Directory.GetCurrentDirectory() + $"/../../INPUTS/";
         static string OUT_FILE = Directory.GetCurrentDirectory() + $"/../../SOLUTIONS/SOLUTION{iteration}.txt";
         static string OUT_PATH = Directory.GetCurrentDirectory() + $"/../../SOLUTIONS/";
@@ -31,9 +31,9 @@ namespace HASHCODE_2019
 
                 string[] lines = File.ReadAllLines(input);
                 parseInput(lines);
-                var solution = StartSolution.GenerateSlideshow(photos);
+                LocalSearch Search = new LocalSearch(photos);
 
-                File.WriteAllLines(OUT_PATH + output, solution.Print());
+                File.WriteAllLines(OUT_PATH + output, Search.SlideShow.Print());
             }
             Console.ReadLine();
         }

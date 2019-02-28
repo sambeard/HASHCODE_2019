@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace HASHCODE_2019
 {
-    public class ScoreEvaluator
+    class ScoreEvaluator
     {
         /* static int EvaluateSlideshow(Slideshow slideshow)
          {
@@ -35,8 +35,8 @@ namespace HASHCODE_2019
         }
         static int CommonTagsScore(Slide slide_n, Slide slide_n1)
         {
-            List<int> slides = (List<int>)slide_n.GetTags().Intersect(slide_n1.GetTags());
-            return slides.Count;
+            var slides = slide_n.GetTags().Intersect(slide_n1.GetTags());
+            return slides.Count();
         }
 
         static int S_1_Ex_Tags(Slide slide_n, Slide slide_n1)

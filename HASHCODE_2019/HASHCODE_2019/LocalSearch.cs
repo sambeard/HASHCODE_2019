@@ -13,13 +13,15 @@ namespace HASHCODE_2019
         public List<Photo> ClosedPhotos;
         public ILSActionChooser ActionChoser;
 
-        int MAX_ITERATION = 100000;
+        int MAX_ITERATION = 1000;
 
         public LocalSearch(List<Photo> photos) {
 
             OpenPhotos = photos;
             ActionChoser = new ILSActionChooser();
             ClosedPhotos = new List<Photo>();
+            SlideShow = StartSolution.GenerateSlideshow(photos);
+
 
             // call startsolution
             iterate();
@@ -34,12 +36,11 @@ namespace HASHCODE_2019
                 ILSAction action = ActionChoser.GetAction();
 
                 ActionObject a = action.Calculate(this);
-                if (!a.FAILED && a.Diff > -2) {
-
+                if (!a.FAILED && a.Diff > -1) {
+                    // execute if diff > 0
+                    action.Execute(this);
                 }
 
-                // execute if diff > 0
-                action.Execute(this);
 
             }
         }
