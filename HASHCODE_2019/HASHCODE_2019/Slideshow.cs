@@ -8,11 +8,27 @@ namespace HASHCODE_2019
 {
     class Slideshow
     {
-        public List<Slide> Slides;
+        public LinkedList<Slide> Slides;
+        public Dictionary<Slide, LinkedListNode<Slide>> References;
 
         public Slideshow(List<Slide> slides)
         {
-            Slides = slides;
+            Slides = new LinkedList<Slide>();
+            References = new Dictionary<Slide, LinkedListNode<Slide>>();
+
+            foreach (var slide in slides)
+            {
+                var node = Slides.AddLast(slide);
+                References.Add(slide, node);
+            }
+        }
+        public void RemoveSlide(Slide s) {
+            Slides.Remove(s);
+            References.Remove(s);
+        }
+        public void AddSlideBefore(LinkedListNode<Slide> before, Slide s) {
+            var node = Slides.AddBefore(before, s);
+            References.Add(s,node);
         }
 
         public void Print()
