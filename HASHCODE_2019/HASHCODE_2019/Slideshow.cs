@@ -31,13 +31,16 @@ namespace HASHCODE_2019
             References.Add(s,node);
         }
 
-        public void Print()
+        public string[] Print()
         {
-            Console.WriteLine(Slides.Count);
+            string[] output = new string[Slides.Count + 1];
+            output[0] = Slides.Count.ToString();
+            int index = 1;
             foreach (var slide in Slides)
             {
-                slide.Print();
+                output[index++] = slide.Print();
             }
+            return output;
         }
 
         public Slide GetRandomslide() {
@@ -48,9 +51,8 @@ namespace HASHCODE_2019
 
     abstract class Slide
     {
-        public abstract void Print();
-
         public abstract List<int> GetTags();
+        public abstract string Print();
     }
 
     class HorizontalSlide : Slide
@@ -62,9 +64,9 @@ namespace HASHCODE_2019
             Photo = photo;
         }
 
-        public override void Print()
+        public override string Print()
         {
-            Console.WriteLine(Photo.ID);
+            return Photo.ID.ToString();
         }
 
         public override List<int> GetTags() {
@@ -84,9 +86,9 @@ namespace HASHCODE_2019
             Photo2 = photo2;
         }
 
-        public override void Print()
+        public override string Print()
         {
-            Console.WriteLine($"{Photo1.ID} {Photo2.ID}");
+            return $"{Photo1.ID} {Photo2.ID}";
         }
 
         public override List<int> GetTags()
