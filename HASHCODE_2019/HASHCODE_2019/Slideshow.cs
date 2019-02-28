@@ -8,11 +8,27 @@ namespace HASHCODE_2019
 {
     class Slideshow
     {
-        public List<Slide> Slides;
+        public LinkedList<Slide> Slides;
+        public Dictionary<Slide, LinkedListNode<Slide>> References;
 
         public Slideshow(List<Slide> slides)
         {
-            Slides = slides;
+            Slides = new LinkedList<Slide>();
+            References = new Dictionary<Slide, LinkedListNode<Slide>>();
+
+            foreach (var slide in slides)
+            {
+                var node = Slides.AddLast(slide);
+                References.Add(slide, node);
+            }
+        }
+        public void RemoveSlide(Slide s) {
+            Slides.Remove(s);
+            References.Remove(s);
+        }
+        public void AddSlideBefore(LinkedListNode<Slide> before, Slide s) {
+            var node = Slides.AddBefore(before, s);
+            References.Add(s,node);
         }
 
         public string[] Print()
@@ -25,10 +41,16 @@ namespace HASHCODE_2019
             }
             return output;
         }
+
+        public Slide GetRandomslide() {
+            Random rand = new Random();
+           return References.ElementAt(rand.Next(0, References.Count)).Key;
+        }
     }
 
     abstract class Slide
     {
+        public abstract List<int> GetTags();
         public abstract string Print();
     }
 
@@ -44,6 +66,11 @@ namespace HASHCODE_2019
         public override string Print()
         {
             return Photo.ID.ToString();
+        }
+
+        public override List<int> GetTags() {
+            return Photo.Tags.ToList();
+
         }
     }
 
@@ -61,6 +88,15 @@ namespace HASHCODE_2019
         public override string Print()
         {
             return $"{Photo1.ID} {Photo2.ID}";
+        }
+
+        public override List<int> GetTags()
+        {
+
+            List<int> tags = Photo1.Tags.ToList();
+            tags.AddRange(Photo2.Tags.ToList());
+            return tags;
+
         }
     }
 }
