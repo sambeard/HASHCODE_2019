@@ -10,6 +10,7 @@ namespace HASHCODE_2019
     {
         public LinkedList<Slide> Slides;
         public Dictionary<Slide, LinkedListNode<Slide>> References;
+        Random random = new Random();
 
         public Slideshow(List<Slide> slides)
         {
@@ -44,8 +45,7 @@ namespace HASHCODE_2019
         }
 
         public Slide GetRandomslide() {
-            Random rand = new Random();
-           return References.ElementAt(rand.Next(0, References.Count)).Key;
+           return References.ElementAt(random.Next(0, References.Count)).Key;
         }
     }
 
