@@ -15,7 +15,7 @@ namespace HASHCODE_2019
             Diff = d;
         }
 
-        static ActionObject FailedObject() {
+        public static ActionObject FailedObject() {
             var obj = new ActionObject();
             obj.FAILED = true;
             return obj;
