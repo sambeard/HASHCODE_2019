@@ -12,8 +12,12 @@ namespace HASHCODE_2019
         public List<Photo> OpenPhotos;
         public List<Photo> ClosedPhotos;
         public ILSActionChooser ActionChoser;
+        Random Random = new Random();
+        float T = 10;
+        float omega = 0.95f;
+        int UPDATE_ITERATIONS = 1000;
 
-        int MAX_ITERATION = 1000;
+        int MAX_ITERATION = 10000;
 
         public LocalSearch(List<Photo> photos) {
 
@@ -36,11 +40,13 @@ namespace HASHCODE_2019
                 ILSAction action = ActionChoser.GetAction();
 
                 ActionObject a = action.Calculate(this);
-                if (!a.FAILED && a.Diff > -1) {
+                if (!a.FAILED && (a.Diff > 0 || Random.NextDouble() <= Math.Exp(((float)-a.Diff) / T)) ) {
                     // execute if diff > 0
                     action.Execute(this);
                 }
-
+                if (i % UPDATE_ITERATIONS == 0) {
+                    T *= omega;
+                }
 
             }
         }
